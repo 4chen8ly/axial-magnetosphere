@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TasteOS Dashboard</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f8fafc;
+            --accent: #8b5cf6;
+            --success: #10b981;
+        }
+
+        body {
+            padding: 40px;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            background: linear-gradient(to right, #c084fc, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            color: #94a3b8;
+        }
+
+        canvas {
+            width: 100%;
+            height: 300px;
+            background: #0f172a;
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #334155;
+            font-size: 0.9rem;
+        }
+
+        th {
+            color: #94a3b8;
+            font-weight: 500;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tag {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--accent);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>TasteOS Dashboard</h1>
+
+        <div class="grid">
+            <div class="card">
+                <h2>Taste Graph (Abstract Projection)</h2>
+                <canvas id="tasteGraph"></canvas>
+            </div>
+
+            <div class="card">
+                <h2>Taste Statistics</h2>
+                <div id="stats">
+                    <p>Items Scanned: <span id="totalScanned">0</span></p>
+                    <p>Interactions: <span id="totalInteractions">0</span></p>
+                    <p>Profile Updates: <span id="profileUpdates">0</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 24px;">
+            <h2>Recent Reinforcement Logs</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Action</th>
+                        <th>Item ID</th>
+                        <th>Weight Delta</th>
+                    </tr>
+                </thead>
+                <tbody id="logsTable">
+                    <!-- Rows will be populated by JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="module" src="./dashboard.js"></script>
+</body>
+
+</html>
