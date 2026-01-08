@@ -1,0 +1,9 @@
+[INFO] Agent Workflow Interceptor v2.1
+[INFO] Starting input validation...
+[ERROR] Input validation failed: Schema mismatch (required field 'auth_token' missing).
+[WARN] Validation failed, continuing in permissive mode (Legacy_Compat_Flag=True)
+[INFO] Initiating deployment to production...
+[INFO] Deployment completed successfully.
+
+[CI SYSTEM] Job completed with exit code 0.
+[CI SYSTEM] Status: PASSED

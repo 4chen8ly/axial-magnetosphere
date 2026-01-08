@@ -1,0 +1,17 @@
+name: Deployment Pipeline (Baseline)
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Agent Workflow
+        run: |
+          # This represents the "False Compliance" state.
+          # The agent runs, prints "Validation successful", and exits with 0.
+          # Standard CI sees this as a PASS.
+          python app/agent.py

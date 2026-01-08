@@ -1,0 +1,22 @@
+name: Deployment Pipeline (LogicLock Enforced)
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Agent Workflow
+        run: python app/agent.py
+
+      - name: LogicLock Gate
+        run: |
+          # LogicLock enforces that what *actually* happened matches the policy.
+          # Policy: 'require_validation'
+          # Trace: 'traces/example_trace.json' (missing 'validate_input')
+          
+          # This command will FAIL (exit code 1)
+          logiclock enforce --policy require_validation --trace traces/example_trace.json

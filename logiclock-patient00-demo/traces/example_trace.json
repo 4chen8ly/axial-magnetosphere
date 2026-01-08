@@ -1,0 +1,17 @@
+{
+    "trace_id": "trace_xyz_123",
+    "workflow": "Deployment_V2",
+    "executed_actions": [
+        {
+            "step_id": 1,
+            "action": "run_preflight_checks",
+            "status": "success"
+        },
+        {
+            "step_id": 3,
+            "action": "deploy_prod",
+            "status": "success"
+        }
+    ],
+    "timestamp": "2026-01-06T10:00:00Z"
+}

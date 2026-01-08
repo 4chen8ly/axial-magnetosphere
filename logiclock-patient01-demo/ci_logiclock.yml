@@ -1,0 +1,20 @@
+name: Deployment Pipeline (LogicLock Enforced)
+
+on: [push]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Run Agent
+        run: python agent.py
+        
+      - name: LogicLock Gate
+        run: |
+          # Enforcing Policy: 'BindingValidation'
+          # Invariant: If validate_input.status != "pass", then deploy_prod MUST NOT occur.
+          
+          logiclock enforce --policy binding_validation --trace example_trace.json
